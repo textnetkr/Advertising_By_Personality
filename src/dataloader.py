@@ -23,8 +23,17 @@ def load(
 
         result = tokenizer(
             [
-                "<ctrl1>" + t1 + "<ctrl2>" + t2 + tokenizer.sep_token + t3
-                for t1, t2, t3 in zip(e["ctrl1"], e["ctrl2"], e["input"])
+                "<season>"
+                + t1
+                + "<ctrl1>"
+                + t2
+                + "<ctrl2>"
+                + t3
+                + tokenizer.sep_token
+                + t4
+                for t1, t2, t3, t4 in zip(
+                    e["season"], e["ctrl1"], e["ctrl2"], e["input"]
+                )
             ],
             max_length=seq_len,
             padding="max_length",
