@@ -1,3 +1,9 @@
 .DS_Store
 data/
 outputs/
+src/__pycache__/
+src/config.yaml
+src/preprocessing/__pycache__/
+src/preprocessing/config.py
+src/t5/__pycache__/
+src/t5/config.yaml
