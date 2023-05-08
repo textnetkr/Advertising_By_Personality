@@ -1,7 +1,5 @@
 import torch
 from peft import (
-    PeftModel,
-    PeftConfig,
     LoraConfig,
     get_peft_model
 )
@@ -10,7 +8,7 @@ from peft import (
 def post_processing(model):
     # Post-processing on the model
     for param in model.parameters():
-        param.requires_grad = False  # freeze the model - train adapters later
+        param.requires_grad = False  # f`reeze the model - train adapters later
         if param.ndim == 1:
             # cast the small parameters (e.g. layernorm) to fp32 for stability
             param.data = param.data.to(torch.float32)
@@ -53,6 +51,6 @@ def lora(model):
     )
 
     model = get_peft_model(model, config)
-    print_trainable_parameters(model)
+    model.print_trainable_parameters
 
     return model
