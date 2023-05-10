@@ -1,7 +1,6 @@
 import hydra
 import wandb
 import torch
-import transformers
 from transformers import (
     PreTrainedTokenizerFast,
     GPTNeoXForCausalLM,
@@ -9,7 +8,7 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling,
 )
-from custom import post_processing, lora
+from custom_lora import post_processing, lora
 from dataloader import load
 
 
@@ -23,7 +22,9 @@ def main(cfg):
 
     # model
     model = GPTNeoXForCausalLM.from_pretrained(
-        cfg.MODEL.name, load_in_8bit=True, device_map="auto"
+        cfg.MODEL.name,
+        load_in_8bit=True,  # bitsandbytes 8비트 양자화 모델로 load
+        device_map="auto",  # 각 하위 모듈이 이동해야 하는 위치를 지정하는 맵. 사용 가능한 모든 GPU에서 모델을 고르게 분할.
     )
 
     # transfer lora model - get_peft_model
