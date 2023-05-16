@@ -15,3 +15,4 @@ src/business_model/generation_lora/config.yaml
 src/business_model/keyword_extraction/__pycache__/
 src/business_model/keyword_extraction/config.py
 src/preprocessing/config (1).py
+src/business_model/generation_lora/backup/
