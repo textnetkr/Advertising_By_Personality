@@ -13,8 +13,7 @@ def main(cfg):
     df = fm.load(cfg.PATH.for_gpt4)
 
     # OpenAI Api Key
-    OPENAI_API_KEY = "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"
-    openai.api_key = OPENAI_API_KEY
+    openai.api_key = cfg.OPENAI.OPENAI_API_KEY
     model = "gpt-4"
 
     def generate_response(messages):
