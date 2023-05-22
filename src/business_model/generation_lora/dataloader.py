@@ -14,7 +14,6 @@ def load(
     eval_data_path: Optional[str] = None,
     train_test_split: Optional[float] = None,
     worker: int = 1,
-    batch_size: int = 1000,
     shuffle_seed: Optional[int] = None,
 ):
     def _tokenize_function(e):
@@ -22,8 +21,10 @@ def load(
             [
                 f"""Below is an instruction that describes a task, paired with an input that provides further context.\n
                 아래는 작업을 설명하는 명령어와 추가적 맥락을 제공하는 입력이 짝을 이루는 예제입니다.\n\n
-                Write a response that appropriately completes the request.\n요청을 적절히 완료하는 응답을 작성하세요.\n\n
-                ### Instruction(명령어):\n다음 정보를 활용해서 광고 문구를 생성해줘.\n\n
+                Write a response that appropriately completes the request.\n
+                요청을 적절히 완료하는 응답을 작성하세요.\n\n
+                ### Instruction(명령어):\n너는 판매 촉진을 위한 마케팅 문구를 만드는 카피라이터야.\n
+                    마케팅 주체, 마케팅 대상, 혜택 조건, 할인 수치, 프로모션 품목, 이벤트 기간, 시즌 정보로 광고 문구를 생성할거야.\n\n
                 ### Input(입력):\n마케팅 주체: {t1}, 마케팅 대상: {t2}, 혜택 조건: {t3}, 할인 수치: {t4}, 프로모션 품목: {t5}, 이벤트 기간: {t6}, 시즌 정보: {t7}\n\n
                 ### Response(응답):\n{t8}
                 """
@@ -38,13 +39,18 @@ def load(
                     e["label"],
                 )
             ],
-            max_length=seq_len,
+            max_length=seq_len + 1,
             padding="max_length",
             truncation=True,
             return_tensors="pt",
         )
         del result["token_type_ids"]
-        return result
+
+        return {
+            "input_ids": result.input_ids[:-1],
+            "attention_mask": result.attention_mask[:-1],
+            "labels": result.input_ids[1:],
+        }
 
     train_data_path = abspath(train_data_path)
     is_eval = False
@@ -91,7 +97,7 @@ def load(
 
 
 # Write preprocessor code to run in batches.
-def custom_default_collator(data, batch_size):
+def custom_collator(data, batch_size):
     dataloader = DataLoader(
         data,
         shuffle=True,
