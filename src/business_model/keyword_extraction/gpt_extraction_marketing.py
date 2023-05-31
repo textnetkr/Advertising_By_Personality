@@ -28,7 +28,7 @@ def main(cfg):
         for t in type:
             df_temp = df[df.type == t]
             df_temp.reset_index(inplace=True, drop=True)
-            start = 878
+            start = 983
             df_temp = df_temp.iloc[start:]
             print(f"{start}번째 행부터 시작!")
             data = [[i[1]["type"], i[1]["input"]] for i in df_temp.iterrows()]
@@ -86,7 +86,7 @@ def main(cfg):
 
     finally:
         # Processing
-        df_temp = df_temp.iloc[:k]
+        # df_temp = df_temp.iloc[:k]
         df_temp["marketing"] = predict
         df_temp["marketing_temp"] = df_temp.marketing.swifter.apply(
             lambda x: x.replace("마케팅 주체 : ", "")
