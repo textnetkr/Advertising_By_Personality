@@ -19,3 +19,5 @@ src/business_model/generation_lora/backup/
 src/bart/__pycache__/
 src/bart/config.py
 src/business_model/keyword_extraction/config.yaml
+src/business_model/t5/__pycache__/
+src/business_model/t5/config.yaml
