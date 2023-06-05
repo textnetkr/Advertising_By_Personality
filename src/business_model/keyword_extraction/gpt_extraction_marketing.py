@@ -11,7 +11,7 @@ import openai
 def main(cfg):
     try:
         # Data Load
-        df = fm.load(cfg.PATH.for_gpt)
+        df = fm.load(cfg.PATH.for_gpt2)
 
         # OpenAI Api Key
         openai.api_key = cfg.OPENAI.OPENAI_API_KEY
@@ -24,11 +24,11 @@ def main(cfg):
         # GPT Extraction
         predict = []
         # type = ["NT", "NF"]
-        type = ["NF"]
+        type = ["NT"]
         for t in type:
             df_temp = df[df.type == t]
             df_temp.reset_index(inplace=True, drop=True)
-            start = 983
+            start = 199
             df_temp = df_temp.iloc[start:]
             print(f"{start}번째 행부터 시작!")
             data = [[i[1]["type"], i[1]["input"]] for i in df_temp.iterrows()]
@@ -75,6 +75,7 @@ def main(cfg):
                     },
                 ]
                 result = generate_response(messages)
+                print(f"{start + k}번째 행")
                 print(f"원문 : {i[1]}")
                 print(f"답변 : {result}")
                 print("-" * 100)
@@ -86,7 +87,7 @@ def main(cfg):
 
     finally:
         # Processing
-        # df_temp = df_temp.iloc[:k]
+        df_temp = df_temp.iloc[:k]
         df_temp["marketing"] = predict
         df_temp["marketing_temp"] = df_temp.marketing.swifter.apply(
             lambda x: x.replace("마케팅 주체 : ", "")
@@ -172,7 +173,7 @@ def main(cfg):
             }
             for _, row in df_result.iterrows()
         ]
-        with open(eval(f"cfg.PATH.EXT_GPT_{t}"), "a", encoding="utf-8") as f:
+        with open(eval(f"cfg.PATH.EXT_GPT_{t}2"), "a", encoding="utf-8") as f:
             for line in temp_dict:
                 json_record = json.dumps(line, ensure_ascii=False)
                 f.write(json_record + "\n")

@@ -10,7 +10,7 @@ def main(cfg):
     try:
         # Data Load
         data = []
-        with open(cfg.PATH.train_data, "r", encoding="utf-8") as f:
+        with open(cfg.PATH.train_data2, "r", encoding="utf-8") as f:
             for line in f:
                 data.append(json.loads(line.rstrip("\n|\r")))
         df = pd.DataFrame(data)
@@ -122,7 +122,7 @@ def main(cfg):
             }
             for _, row in df_result.iterrows()
         ]
-        with open(eval(f"cfg.PATH.final_traiin_data"), "a", encoding="utf-8") as f:
+        with open(eval(f"cfg.PATH.ext_gpt_mbti"), "a", encoding="utf-8") as f:
             for line in temp_dict:
                 json_record = json.dumps(line, ensure_ascii=False)
                 f.write(json_record + "\n")
