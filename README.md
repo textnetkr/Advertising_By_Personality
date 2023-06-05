@@ -8,34 +8,34 @@
 &nbsp;&nbsp;&nbsp;KoAlpaca-Polyglot 5.8b 모델로 PEFT LoRA <br><br>
 
 # 👉🏻 tree
-.
-├── README.md
-├── requirements.txt
-├── src
-│   ├── bart
-│   │   ├── dataloader.py
-│   │   ├── predict.py
-│   │   ├── run.ipynb
-│   │   └── train.py
-│   ├── business_model
-│   │   ├── generation_lora
-│   │   │   ├── custom_lora.py
-│   │   │   ├── dataloader.py
-│   │   │   ├── predict.py
-│   │   │   ├── run.ipynb
-│   │   │   └── train.py
-│   │   ├── keyword_extraction
-│   │   │   ├── after_treatment.ipynb
-│   │   │   ├── for_extraction.ipynb
-│   │   │   ├── gpt_extraction_marketing.py
-│   │   │   ├── gpt_extraction_mbti.py
-│   │   │   └── keybert.ipynb
-│   │   └── t5
-│   │       ├── dataloader.py
-│   │       ├── predict.py
-│   │       ├── run.ipynb
-│   │       └── train.py
-│   ├── preprocessing
-│   │   ├── for_train.ipynb
-│   └── └── predict_check.ipynb
-└── tree.txt
+.<br>
+├── README.md<br>
+├── requirements.txt<br>
+├── src<br>
+│   ├── bart<br>
+│   │   ├── dataloader.py<br>
+│   │   ├── predict.py<br>
+│   │   ├── run.ipynb<br>
+│   │   └── train.py<br>
+│   ├── business_model<br>
+│   │   ├── generation_lora<br>
+│   │   │   ├── custom_lora.py<br>
+│   │   │   ├── dataloader.py<br>
+│   │   │   ├── predict.py<br>
+│   │   │   ├── run.ipynb<br>
+│   │   │   └── train.py<br>
+│   │   ├── keyword_extraction<br>
+│   │   │   ├── after_treatment.ipynb<br>
+│   │   │   ├── for_extraction.ipynb<br>
+│   │   │   ├── gpt_extraction_marketing.py<br>
+│   │   │   ├── gpt_extraction_mbti.py<br>
+│   │   │   └── keybert.ipynb<br>
+│   │   └── t5<br>
+│   │       ├── dataloader.py<br>
+│   │       ├── predict.py<br>
+│   │       ├── run.ipynb<br>
+│   │       └── train.py<br>
+│   ├── preprocessing<br>
+│   │   ├── for_train.ipynb<br>
+│   └── └── predict_check.ipynb<br>
+└── tree.txt<br>
