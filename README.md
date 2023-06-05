@@ -5,7 +5,7 @@
 # 👉🏻 model
 - 기존 광고 메시지를 다른 성격유형 문체로 변경하는 맞춤형 광고 메시지 생성 모델 구현 - koBART<br>
 - NT 성향 문구, NF 성향 문구, 마케팅 대상, 소구점 등 총 13개 마케팅 정보를 입력 받아 광고 메시지 생성하는 모델 - koT5<br>
-&nbsp&nbsp&nbspko<br><br>
+&nbsp;&nbsp;&nbsp;KoAlpaca-Polyglot 5.8b 모델로 PEFT LoRA <br><br>
 
 # 👉🏻 tree
 .<br>
