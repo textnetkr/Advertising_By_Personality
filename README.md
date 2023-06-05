@@ -12,30 +12,30 @@
 ├── README.md<br>
 ├── requirements.txt<br>
 ├── src<br>
- │   ├── bart<br>
- │   │   ├── dataloader.py<br>
- │   │   ├── predict.py<br>
- │   │   ├── run.ipynb<br>
- │   │   └── train.py<br>
- │   ├── business_model<br>
- │   │   ├── generation_lora<br>
- │   │   │   ├── custom_lora.py<br>
- │   │   │   ├── dataloader.py<br>
- │   │   │   ├── predict.py<br>
- │   │   │   ├── run.ipynb<br>
- │   │   │   └── train.py<br>
- │   │   ├── keyword_extraction<br>
- │   │   │   ├── after_treatment.ipynb<br>
- │   │   │   ├── for_extraction.ipynb<br>
- │   │   │   ├── gpt_extraction_marketing.py<br>
- │   │   │   ├── gpt_extraction_mbti.py<br>
- │   │   │   └── keybert.ipynb<br>
- │   │   └── t5<br>
- │   │       ├── dataloader.py<br>
- │   │       ├── predict.py<br>
- │   │       ├── run.ipynb<br>
- │   │       └── train.py<br>
- │   ├── preprocessing<br>
- │   │   ├── for_train.ipynb<br>
- │   └── └── predict_check.ipynb<br>
+&nbsp;│   ├── bart<br>
+&nbsp;│   │   ├── dataloader.py<br>
+&nbsp;│   │   ├── predict.py<br>
+&nbsp;│   │   ├── run.ipynb<br>
+&nbsp;│   │   └── train.py<br>
+&nbsp;│   ├── business_model<br>
+&nbsp;│   │   ├── generation_lora<br>
+&nbsp;│   │   │   ├── custom_lora.py<br>
+&nbsp;│   │   │   ├── dataloader.py<br>
+&nbsp;│   │   │   ├── predict.py<br>
+&nbsp;│   │   │   ├── run.ipynb<br>
+&nbsp;│   │   │   └── train.py<br>
+&nbsp;│   │   ├── keyword_extraction<br>
+&nbsp;│   │   │   ├── after_treatment.ipynb<br>
+&nbsp;│   │   │   ├── for_extraction.ipynb<br>
+&nbsp;│   │   │   ├── gpt_extraction_marketing.py<br>
+&nbsp;│   │   │   ├── gpt_extraction_mbti.py<br>
+&nbsp;│   │   │   └── keybert.ipynb<br>
+&nbsp;│   │   └── t5<br>
+&nbsp;│   │       ├── dataloader.py<br>
+&nbsp;│   │       ├── predict.py<br>
+&nbsp;│   │       ├── run.ipynb<br>
+&nbsp;│   │       └── train.py<br>
+&nbsp;│   ├── preprocessing<br>
+&nbsp;│   │   ├── for_train.ipynb<br>
+&nbsp;│   └── └── predict_check.ipynb<br>
 └── tree.txt<br>
