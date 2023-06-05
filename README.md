@@ -5,37 +5,37 @@
 # 👉🏻 model
 - 기존 광고 메시지를 다른 성격유형 문체로 변경하는 맞춤형 광고 메시지 생성 모델 구현 - koBART<br>
 - NT 성향 문구, NF 성향 문구, 마케팅 대상, 소구점 등 총 13개 마케팅 정보를 입력 받아 광고 메시지 생성하는 모델 - koT5<br>
-&nbsp;&nbsp;&nbsp;KoAlpaca-Polyglot 5.8b 모델로 PEFT LoRA <br><br>
+&nbsp;&nbsp;&nbsp;PEFT LoRA 시도 - KoAlpaca-Polyglot 5.8b<br><br>
 
 # 👉🏻 tree
 .<br>
 ├── README.md<br>
 ├── requirements.txt<br>
 ├── src<br>
-│   ├── bart<br>
-│   │   ├── dataloader.py<br>
-│   │   ├── predict.py<br>
-│   │   ├── run.ipynb<br>
-│   │   └── train.py<br>
-│   ├── business_model<br>
-│   │   ├── generation_lora<br>
-│   │   │   ├── custom_lora.py<br>
-│   │   │   ├── dataloader.py<br>
-│   │   │   ├── predict.py<br>
-│   │   │   ├── run.ipynb<br>
-│   │   │   └── train.py<br>
-│   │   ├── keyword_extraction<br>
-│   │   │   ├── after_treatment.ipynb<br>
-│   │   │   ├── for_extraction.ipynb<br>
-│   │   │   ├── gpt_extraction_marketing.py<br>
-│   │   │   ├── gpt_extraction_mbti.py<br>
-│   │   │   └── keybert.ipynb<br>
-│   │   └── t5<br>
-│   │       ├── dataloader.py<br>
-│   │       ├── predict.py<br>
-│   │       ├── run.ipynb<br>
-│   │       └── train.py<br>
-│   ├── preprocessing<br>
-│   │   ├── for_train.ipynb<br>
-│   └── └── predict_check.ipynb<br>
+ │   ├── bart<br>
+ │   │   ├── dataloader.py<br>
+ │   │   ├── predict.py<br>
+ │   │   ├── run.ipynb<br>
+ │   │   └── train.py<br>
+ │   ├── business_model<br>
+ │   │   ├── generation_lora<br>
+ │   │   │   ├── custom_lora.py<br>
+ │   │   │   ├── dataloader.py<br>
+ │   │   │   ├── predict.py<br>
+ │   │   │   ├── run.ipynb<br>
+ │   │   │   └── train.py<br>
+ │   │   ├── keyword_extraction<br>
+ │   │   │   ├── after_treatment.ipynb<br>
+ │   │   │   ├── for_extraction.ipynb<br>
+ │   │   │   ├── gpt_extraction_marketing.py<br>
+ │   │   │   ├── gpt_extraction_mbti.py<br>
+ │   │   │   └── keybert.ipynb<br>
+ │   │   └── t5<br>
+ │   │       ├── dataloader.py<br>
+ │   │       ├── predict.py<br>
+ │   │       ├── run.ipynb<br>
+ │   │       └── train.py<br>
+ │   ├── preprocessing<br>
+ │   │   ├── for_train.ipynb<br>
+ │   └── └── predict_check.ipynb<br>
 └── tree.txt<br>
