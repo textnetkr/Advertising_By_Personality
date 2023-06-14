@@ -25,7 +25,7 @@ def main(cfg):
 
         # GPT Extraction
         predict = []
-        start = 643
+        start = 2993
         df_start = df.iloc[start:]
         print(df_start.head())
         print(f"{start}번째 행부터 시작!")
