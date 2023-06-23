@@ -14,10 +14,13 @@ def main(cfg):
     try:
         # Data Load
         data = []
-        with open(cfg.PATH.EXT_GPT_MARKET, "r", encoding="utf-8") as f:
+        with open(cfg.PATH.for_selling_ntnf, "r", encoding="utf-8") as f:
             for line in f:
                 data.append(json.loads(line.rstrip("\n|\r")))
         df = pd.DataFrame(data)
+
+        df_temp = df.iloc[[956, 282, 2002, 2003, 2004], :].copy()
+        print(df_temp.head())
 
         # OpenAI Api Key
         openai.api_key = cfg.OPENAI.OPENAI_API_KEY
@@ -29,22 +32,22 @@ def main(cfg):
             return response["choices"][0]["message"]["content"]
 
         # GPT Extraction
-        start = 0
-        df_start = df.iloc[start:5]
+        # start = 0
+        # df_start = df.iloc[start:5]
 
         s_time = time.time()
-        print(df_start.head())
-        print(f"{start}번째 행부터 시작!")
+        # print(df_start.head())
+        # print(f"{start}번째 행부터 시작!")
 
         selling = []
         selling_sent = []
         market_info = []
-        for k, i in enumerate(df_start.iterrows()):
+        for k, i in enumerate(df_temp.iterrows()):
             # selling_point
             messages = [
                 {
                     "role": "system",
-                    "content": mp.mbti["SELLING_SF"],
+                    "content": mp.mbti["SELLING_NTNF"],
                 },
                 {
                     "role": "user",
@@ -54,7 +57,8 @@ def main(cfg):
             ]
 
             sell_result = generate_response(messages)
-            print(f"{start + k}번째 행")
+            # print(f"{start + k}번째 행")
+            print(f"{k}번째 행")
             print(f"원문 : {i[1]['label']}")
             print(f"답변 : {sell_result}")
             print("-" * 100)
@@ -64,11 +68,13 @@ def main(cfg):
             messages = [
                 {
                     "role": "system",
-                    "content": mp.mbti["SELLING_SENT_SF"],
+                    "content": mp.mbti["SELLING_SENT_NTNF"],
                 },
                 {
                     "role": "user",
                     # "content": f"""{i[1]['label']}\n위 문장에 해당하는 마케팅 대상 : {i[1]['marketing_entity']}, 타겟 : {i[1]['marketing_target']}, 혜택 지급 조건 : {i[1]['benefit_conditions']}, 혜택 : {i[1]['benefits']}, 할인 수치 : {i[1]['discount_figure']}, 프로모션 품목 : {i[1]['promotional_items']}, 프로모션 장소 : {i[1]['promotional_place']}, 이벤트 기간 : {i[1]['event_period']}, 요일 정보 : {i[1]['dow_information']}, 시즌 정보 : {i[1]['season_information']}, 소구점 : {sell_result}을 반영하여 매력있는 광고 문구를 만들어줘.\n
+                    # 소구점이 반영된 광고 문구 : """,
+                    # "content": f"""{i[1]['label']}\n위 문장에 해당하는 요일 정보 : {i[1]['dow_information']}, 시즌 정보 : {i[1]['season_information']}, 소구점 : {sell_result}을 반영하여 매력있는 광고 문구를 만들어줘.\n
                     # 소구점이 반영된 광고 문구 : """,
                     "content": f"""{i[1]['label']}\n위 문장에 해당하는 소구점 : {sell_result}을 반영하여 매력있는 광고 문구를 만들어줘.\n
                                 소구점이 반영된 광고 문구 : """,
@@ -76,7 +82,7 @@ def main(cfg):
             ]
 
             sell_sent = generate_response(messages)
-            print(f"{start + k}번째 행")
+            # print(f"{start + k}번째 행")
             print(f"원문 : {i[1]['label']}")
             print(f"답변 : {sell_sent}")
             print("-" * 100)
@@ -95,7 +101,7 @@ def main(cfg):
         print(f"An error occurred: {e}")
     finally:
         # temp save
-        df_temp = df.iloc[start : start + len(selling)].copy()
+        # df_temp = df.iloc[start : start + len(selling)].copy()
         df_temp["selling"] = selling
         df_temp["sentence"] = selling_sent
         df_temp["market_info"] = market_info
