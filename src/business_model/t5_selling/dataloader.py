@@ -22,43 +22,7 @@ def load(
         label = dict()
 
         input = tokenizer(
-            [
-                "<market_entity>"
-                + t1
-                + "<market_target>"
-                + t2
-                + "<benefit_cond>"
-                + t3
-                + "<benefits>"
-                + t4
-                + "<dis_figure>"
-                + t5
-                + "<prom_items>"
-                + t6
-                + "<prom_place>"
-                + t7
-                + "<event_period>"
-                + t8
-                + "<dow_info>"
-                + t9
-                + "<season_info>"
-                + t10
-                + "<sell_point>"
-                + t11
-                for t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11 in zip(
-                    e["marketing_entity"],
-                    e["marketing_target"],
-                    e["benefit_conditions"],
-                    e["benefits"],
-                    e["discount_figure"],
-                    e["promotional_items"],
-                    e["promotional_place"],
-                    e["event_period"],
-                    e["dow_information"],
-                    e["season_information"],
-                    e["sell_point"],
-                )
-            ],
+            ["<input>" + t1 for t1 in e["input"]],
             max_length=seq_len,
             padding="max_length",
             truncation=True,

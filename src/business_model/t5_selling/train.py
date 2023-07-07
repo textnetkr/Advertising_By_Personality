@@ -19,22 +19,7 @@ def main(cfg):
     tokenizer = T5TokenizerFast.from_pretrained(cfg.MODEL.name)
 
     # 스페셜 토큰 추가하기
-    special_tokens = {
-        "additional_special_tokens": [
-            "<sep>",
-            "<market_entity>",
-            "<market_target>",
-            "<benefit_cond>",
-            "<benefits>",
-            "<dis_figure>",
-            "<prom_items>",
-            "<prom_place>",
-            "<event_period>",
-            "<dow_info>",
-            "<season_info>",
-            "<sell_point>",
-        ]
-    }
+    special_tokens = {"additional_special_tokens": ["<sep>", "<input>"]}
     tokenizer.add_special_tokens(special_tokens)
 
     # model
