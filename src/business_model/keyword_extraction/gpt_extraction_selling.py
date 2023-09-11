@@ -15,7 +15,7 @@ def main(cfg):
     l_season = []
     l_weather = []
     l_anniv = []
-    type = "ST"
+    type = "NT"
 
     try:
         # Data Load

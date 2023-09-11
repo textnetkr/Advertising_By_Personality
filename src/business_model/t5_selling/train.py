@@ -18,16 +18,32 @@ def main(cfg):
     # tokenizer
     tokenizer = T5TokenizerFast.from_pretrained(cfg.MODEL.name)
 
-    # # 스페셜 토큰 추가하기
-    # special_tokens = {"additional_special_tokens": ["<sep>", "<input>"]}
-    # tokenizer.add_special_tokens(special_tokens)
+    # 스페셜 토큰 추가하기
+    special_tokens = {
+        "additional_special_tokens": [
+            "<type>",
+            "<classified>",
+            "<advertiser>",
+            "<product>",
+            "<product_detail>",
+            "<purpose>",
+            "<benefit>",
+            "<period>",
+            "<target>",
+            "<season>",
+            "<weather>",
+            "<anniv>",
+            "<selling_point>",
+        ]
+    }
+    tokenizer.add_special_tokens(special_tokens)
 
     # model
     model = T5ForConditionalGeneration.from_pretrained(
         cfg.MODEL.name,
         dropout_rate=cfg.MODEL.dropout,
     )
-    # model.resize_token_embeddings(len(tokenizer))
+    model.resize_token_embeddings(len(tokenizer))
 
     # data loder
     train_dataset, eval_dataset = load(tokenizer=tokenizer, **cfg.DATASETS)
